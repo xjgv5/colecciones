@@ -11,7 +11,7 @@ public class EjemploHashsetBuscarDuplicado {
         Set<String> unicos = new HashSet<>();
         for(String pez: peces){
 
-            if (unicos.add(pez) == false){
+            if (!unicos.add(pez)){
                 System.out.println("El elemento : " + pez + " está duplicado");
             }
         }
