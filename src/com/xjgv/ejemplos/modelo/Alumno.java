@@ -1,5 +1,7 @@
 package com.xjgv.ejemplos.modelo;
 
+import java.util.Objects;
+
 public class Alumno implements Comparable<Alumno>{
     private String nombre;
     private Integer nota;
@@ -42,5 +44,21 @@ public class Alumno implements Comparable<Alumno>{
         }
         return this.nota.compareTo(a.getNota());
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Alumno alumno = (Alumno) o;
+
+        if (!Objects.equals(nombre, alumno.nombre)) return false;
+        return Objects.equals(nota, alumno.nota);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, nota);
     }
 }
