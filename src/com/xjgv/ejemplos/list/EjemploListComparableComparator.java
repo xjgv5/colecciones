@@ -1,4 +1,4 @@
-package com.xjgv.ejemplos.set;
+package com.xjgv.ejemplos.list;
 
 import com.xjgv.ejemplos.modelo.Alumno;
 
