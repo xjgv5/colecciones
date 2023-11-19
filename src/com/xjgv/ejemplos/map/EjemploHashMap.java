@@ -5,22 +5,35 @@ import java.util.*;
 public class EjemploHashMap {
     public static void main(String[] args) {
 
-        Map<String, String> persona = new HashMap<>();
+        Map<String, Object> persona = new HashMap<>();
         persona.put("nombre", "John");
         persona.put("apellido", "Doe");
         persona.put("email", "john.doe@email.com");
-        persona.put("edad", "30");
+        persona.put("edad", 30);
 
-        String nombre, apellido, email, edad;
-        nombre = persona.get("nombre");
-        apellido = persona.get("apellido");
+        Map<String, String> direccion = new HashMap<>();
+        direccion.put("pais", "USA");
+        direccion.put("estado", "California");
+        direccion.put("ciudad", "Santa Barbara");
+        direccion.put("calle", "One Street");
+        direccion.put("numero", "120");
+
+        persona.put("direccion", direccion);
+
+        String nombre, apellido;
+        nombre = (String) persona.get("nombre");
+        apellido = (String) persona.get("apellido");
         System.out.println("nombre : " + nombre);
         System.out.println("apellido : " + apellido);
 
-        String valorApellido = persona.remove("apellido");
+        String valorApellido = (String) persona.remove("apellido");
         System.out.println("eliminado : " + valorApellido);
         System.out.println(persona);
 
+        Map<String, String> direccionPersona = (Map<String, String>) persona.get("direccion");
+        String pais = direccionPersona.get("pais");
+        String ciudad = direccionPersona.get("ciudad");
+        String barrio = direccionPersona.getOrDefault("barrio", "La playa");
         boolean b = persona.containsKey("apellido");
         System.out.println("b = " + b);
 
@@ -28,7 +41,7 @@ public class EjemploHashMap {
         System.out.println("contiene John ? : " + b);
 
         System.out.println("--------------------------------");
-        Collection<String> valores = persona.values();
+        Collection<Object> valores = persona.values();
         valores.forEach(System.out::println);
 
         System.out.println("--------------------------------");
@@ -36,14 +49,14 @@ public class EjemploHashMap {
         llaves.forEach(System.out::println);
 
         System.out.println("---------------------------------");
-        for (Map.Entry<String, String> par: persona.entrySet()){
+        for (Map.Entry<String, Object> par: persona.entrySet()){
             System.out.println(par.getKey() + " => " + par.getValue());
         }
 
         System.out.println("---------------------------------");
 
         for (String llave : persona.keySet()){
-            String valor = persona.get(llave);
+            Object valor = persona.get(llave);
             System.out.println(llave + " => " + valor);
         }
 
@@ -55,7 +68,7 @@ public class EjemploHashMap {
         System.out.println("-----------------------------------");
         System.out.println("total : " + persona.size());
         System.out.println("Contiene elementos : " + !persona.isEmpty());
-   
+
 
     }
 }
