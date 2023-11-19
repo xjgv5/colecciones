@@ -25,6 +25,11 @@ public class EjemploLinkedList {
 
         System.out.println(enlazada.getFirst());
         System.out.println(enlazada.getLast());
-   
+        System.out.println(enlazada.get(3));
+        Alumno alm = enlazada.remove(1);
+        System.out.println("El alumno : " + alm.getNombre() + " ha sido removido");
+        Alumno alm2 = enlazada.peekLast();
+        enlazada.pollFirst();
+        enlazada.forEach(System.out::println);
     }
 }
